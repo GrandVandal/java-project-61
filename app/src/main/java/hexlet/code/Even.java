@@ -33,6 +33,7 @@ public class Even {
         System.out.println("'" + actualAnswer + "'"
                 + " is wrong answer ;(. Correct answer was "
                 + "'" + expectedAnswer + "'\n");
+        System.out.println("Let's try again, " + Cli.username + "!\n");
         return false;
     }
 }
