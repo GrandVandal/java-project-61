@@ -3,6 +3,7 @@ package hexlet.code;
 import java.util.Scanner;
 public class App {
     public static Scanner userInput = new Scanner(System.in);
+    public static Engine gameEngine = new Engine();
 
     public static void main(String[] args) {
 
@@ -17,7 +18,8 @@ public class App {
 
             switch (userOption) {
                 case "1" -> Cli.greeting();
-                case "2" -> Even.beginGame();
+                case "2" -> gameEngine.beginGame("Even");
+                case "3" -> gameEngine.beginGame("Calc");
                 case "0" -> isExit = true;
                 default -> System.out.println("Incorrect input!");
             }
