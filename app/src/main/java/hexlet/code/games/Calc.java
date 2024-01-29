@@ -32,7 +32,7 @@ public class Calc implements Game {
         int b = rand.nextInt(20);
 
         expression = a + " " + operator + " " + b;
-        switch(operator) {
+        switch (operator) {
             case "+" -> expected = Integer.toString(a + b);
             case "-" -> expected = Integer.toString(a - b);
             case "*" -> expected = Integer.toString(a * b);
