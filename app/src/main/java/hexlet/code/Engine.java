@@ -8,7 +8,8 @@ public class Engine {
 
     private final Map<String, Game> GAME_LIST = new HashMap<>(Map.of(
             "Even", new Even(),
-            "Calc", new Calc()
+            "Calc", new Calc(),
+            "GCD", new Gcd()
     ));
 
     public void beginGame(String game, int maxRounds) {
@@ -24,6 +25,7 @@ public class Engine {
 
             if (!currentGame.submitAnswer(answer)) {
                 Cli.wrongAnswer(currentGame.getExpected(), answer);
+                currentGame.nextQuestion();
                 return;
             }
 
