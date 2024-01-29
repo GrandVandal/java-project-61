@@ -7,8 +7,7 @@ public class App {
 
     public static void main(String[] args) {
 
-        boolean isExit = false;
-        while (!isExit) {
+        while (true) {
 
             Cli.showOptions();
 
@@ -23,7 +22,9 @@ public class App {
                 case "4" -> gameEngine.beginGame("GCD");
                 case "5" -> gameEngine.beginGame("Progression");
                 case "6" -> gameEngine.beginGame("Prime");
-                case "0" -> isExit = true;
+                case "0" -> {
+                    return;
+                }
                 default -> System.out.println("Incorrect input!");
             }
 

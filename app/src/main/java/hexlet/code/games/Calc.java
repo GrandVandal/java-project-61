@@ -32,12 +32,16 @@ public class Calc implements Game {
         int b = rand.nextInt(20);
 
         expression = a + " " + operator + " " + b;
-        switch (operator) {
-            case "+" -> expected = Integer.toString(a + b);
-            case "-" -> expected = Integer.toString(a - b);
-            case "*" -> expected = Integer.toString(a * b);
-        }
 
+        if (operator.equals("+")) {
+            expected = Integer.toString(a + b);
+        }
+        if (operator.equals("-")) {
+            expected = Integer.toString(a - b);
+        }
+        if (operator.equals("*")) {
+            expected = Integer.toString(a * b);
+        }
     }
 
     public boolean submitAnswer(String answer) {

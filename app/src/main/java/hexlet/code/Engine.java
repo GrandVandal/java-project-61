@@ -1,12 +1,18 @@
 package hexlet.code;
 
-import hexlet.code.games.*;
+import hexlet.code.games.Game;
+import hexlet.code.games.Even;
+import hexlet.code.games.Calc;
+import hexlet.code.games.Gcd;
+import hexlet.code.games.Progression;
+import hexlet.code.games.Prime;
+
 import java.util.Map;
 import java.util.HashMap;
 
 public class Engine {
 
-    private final Map<String, Game> GAME_LIST = new HashMap<>(Map.of(
+    private final Map<String, Game> gameList = new HashMap<>(Map.of(
             "Even", new Even(),
             "Calc", new Calc(),
             "GCD", new Gcd(),
@@ -17,7 +23,7 @@ public class Engine {
     public void beginGame(String game, int maxRounds) {
         Cli.checkGreeting();
 
-        Game currentGame = GAME_LIST.get(game);
+        Game currentGame = gameList.get(game);
         Cli.println(currentGame.getTask());
 
         int round = 0;
