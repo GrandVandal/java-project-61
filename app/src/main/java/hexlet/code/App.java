@@ -21,6 +21,7 @@ public class App {
                 case "2" -> gameEngine.beginGame("Even");
                 case "3" -> gameEngine.beginGame("Calc");
                 case "4" -> gameEngine.beginGame("GCD");
+                case "5" -> gameEngine.beginGame("Progression");
                 case "0" -> isExit = true;
                 default -> System.out.println("Incorrect input!");
             }

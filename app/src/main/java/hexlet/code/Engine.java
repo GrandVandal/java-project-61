@@ -9,7 +9,8 @@ public class Engine {
     private final Map<String, Game> GAME_LIST = new HashMap<>(Map.of(
             "Even", new Even(),
             "Calc", new Calc(),
-            "GCD", new Gcd()
+            "GCD", new Gcd(),
+            "Progression", new Progression()
     ));
 
     public void beginGame(String game, int maxRounds) {
