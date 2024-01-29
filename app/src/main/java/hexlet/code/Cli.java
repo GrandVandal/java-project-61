@@ -32,7 +32,6 @@ public class Cli {
                 May I have your name?\s""");
         username = App.userInput.nextLine();
         println("Hello, " + username + "!");
-        println("");
     }
 
     public static void checkGreeting() {
@@ -50,6 +49,6 @@ public class Cli {
         println("'" + actual + "'"
                 + " is wrong answer ;(. Correct answer was "
                 + "'" + expected + "'\n");
-        println("Let's try again, " + username + "!\n");
+        println("Let's try again, " + username + "!");
     }
 }

@@ -42,7 +42,7 @@ public class Engine {
             round++;
         }
 
-        Cli.println("Congratulations, " + Cli.username + "!\n");
+        Cli.println("Congratulations, " + Cli.username + "!");
     }
 
     public void beginGame(String game) {
