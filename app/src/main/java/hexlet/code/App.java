@@ -22,6 +22,7 @@ public class App {
                 case "3" -> gameEngine.beginGame("Calc");
                 case "4" -> gameEngine.beginGame("GCD");
                 case "5" -> gameEngine.beginGame("Progression");
+                case "6" -> gameEngine.beginGame("Prime");
                 case "0" -> isExit = true;
                 default -> System.out.println("Incorrect input!");
             }

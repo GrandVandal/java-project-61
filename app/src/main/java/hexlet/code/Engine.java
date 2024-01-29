@@ -10,7 +10,8 @@ public class Engine {
             "Even", new Even(),
             "Calc", new Calc(),
             "GCD", new Gcd(),
-            "Progression", new Progression()
+            "Progression", new Progression(),
+            "Prime", new Prime()
     ));
 
     public void beginGame(String game, int maxRounds) {
