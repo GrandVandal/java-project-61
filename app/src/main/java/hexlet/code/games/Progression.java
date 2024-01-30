@@ -17,7 +17,9 @@ public class Progression {
     }
 
     public static void nextQuestion() {
-        String[] progression = new String[10];
+        final int progressionLength = 10;
+
+        String[] progression = new String[progressionLength];
         var rand = new Random();
 
         final int accBound = 15;
