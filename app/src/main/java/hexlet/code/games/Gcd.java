@@ -2,41 +2,24 @@ package hexlet.code.games;
 
 import java.util.Random;
 
-public class Gcd implements Game {
+public class Gcd {
 
-    private String expression;
-    private String expected;
+    public static String expression;
+    public static String expected;
 
-    public Gcd() {
-        nextQuestion();
-    }
-
-    public String getTask() {
-        return "Find the greatest common divisor of given numbers.";
-    }
-
-    public String getExpression() {
-        return expression;
-    }
-
-    public String getExpected() {
-        return expected;
-    }
-
-    public void nextQuestion() {
+    public static void nextQuestion() {
         var rand = new Random();
-        int a = rand.nextInt(100);
-        int b = rand.nextInt(100);
+        int boundA = 50;
+        int boundB = 20;
+
+        int a = rand.nextInt(boundA);
+        int b = rand.nextInt(boundB);
 
         expression = a + " " + b;
         expected = gcd(a, b);
     }
 
-    public boolean submitAnswer(String answer) {
-        return expected.equals(answer);
-    }
-
-    private String gcd(int a, int b) {
+    public static String gcd(int a, int b) {
         while (a != b) {
             if (a > b) {
                 a -= b;

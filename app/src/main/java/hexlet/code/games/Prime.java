@@ -1,46 +1,42 @@
 package hexlet.code.games;
 
-import java.util.List;
 import java.util.Random;
 
-public class Prime implements Game {
+public class Prime {
 
-    private String expression;
-    private String expected;
+    public static String expression;
+    public static String expected;
 
-    public Prime() {
-        nextQuestion();
-    }
-
-    public String getTask() {
-        return "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
-    }
-
-    public String getExpression() {
-        return expression;
-    }
-
-    public String getExpected() {
-        return expected;
-    }
-
-    public void nextQuestion() {
-        var primeNumbers = List.of(
-                2, 3, 5, 7, 11,
-                13, 17, 19, 23, 29,
-                31, 37, 41, 43, 47,
-                53, 59, 61, 67, 71,
-                73, 79, 83, 89, 97
-        );
-
+    public static void nextQuestion() {
         var rand = new Random();
-        int number = rand.nextInt(100);
+        int bound = 100;
+
+        int number = rand.nextInt(bound);
 
         expression = Integer.toString(number);
-        expected = (primeNumbers.contains(number)) ? "yes" : "no";
+        expected = (isPrime(number)) ? "yes" : "no";
     }
 
-    public boolean submitAnswer(String answer) {
-        return expected.equals(answer);
+    public static boolean isPrime(int number, int index) {
+        // Corner cases
+        if (number == 0 || number == 1) {
+            return false;
+        }
+
+        // Checking Prime
+        if (number == index) {
+            return true;
+        }
+
+        // Base cases
+        if (number % index == 0) {
+            return false;
+        }
+        index++;
+        return isPrime(number, index);
+    }
+
+    public static boolean isPrime(int number) {
+        return isPrime(number, 2);
     }
 }

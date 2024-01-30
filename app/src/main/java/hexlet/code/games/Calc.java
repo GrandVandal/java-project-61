@@ -2,37 +2,22 @@ package hexlet.code.games;
 
 import java.util.Random;
 
-public class Calc implements Game {
+public class Calc {
 
-    private String expression;
-    private String expected;
+    public static String expression;
+    public static String expected;
 
-    public Calc() {
-        nextQuestion();
-    }
-
-    public String getTask() {
-        return "What is the result of the expression?";
-    }
-
-    public String getExpression() {
-        return expression;
-    }
-
-    public String getExpected() {
-        return expected;
-    }
-
-    public void nextQuestion() {
+    public static void nextQuestion() {
         String[] operators = {"+", "-", "*"};
         var rand = new Random();
+        int boundA = 50;
+        int boundB = 20;
 
         String operator = operators[rand.nextInt(operators.length)];
-        int a = rand.nextInt(50);
-        int b = rand.nextInt(20);
+        int a = rand.nextInt(boundA);
+        int b = rand.nextInt(boundB);
 
         expression = a + " " + operator + " " + b;
-
         if (operator.equals("+")) {
             expected = Integer.toString(a + b);
         }
@@ -42,10 +27,6 @@ public class Calc implements Game {
         if (operator.equals("*")) {
             expected = Integer.toString(a * b);
         }
-    }
-
-    public boolean submitAnswer(String answer) {
-        return expected.equals(answer);
     }
 
 }

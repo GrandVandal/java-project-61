@@ -3,26 +3,24 @@ package hexlet.code;
 import java.util.Scanner;
 public class App {
     public static Scanner userInput = new Scanner(System.in);
-    public static Engine gameEngine = new Engine();
 
     public static void main(String[] args) {
         Cli.showOptions();
 
-        System.out.print("Your choice: ");
+        Cli.print("Your choice: ");
         String userOption = userInput.nextLine();
-        System.out.println();
+        Cli.println("");
 
+        int maxRounds = 3;
         switch (userOption) {
             case "1" -> Cli.greeting();
-            case "2" -> gameEngine.beginGame("Even");
-            case "3" -> gameEngine.beginGame("Calc");
-            case "4" -> gameEngine.beginGame("GCD");
-            case "5" -> gameEngine.beginGame("Progression");
-            case "6" -> gameEngine.beginGame("Prime");
-            case "0" -> {
-                return;
-            }
-            default -> System.out.println("Incorrect input!");
+            case "2" -> Engine.beginGame("Even", maxRounds);
+            case "3" -> Engine.beginGame("Calc", maxRounds);
+            case "4" -> Engine.beginGame("GCD", maxRounds);
+            case "5" -> Engine.beginGame("Progression", maxRounds);
+            case "6" -> Engine.beginGame("Prime", maxRounds);
+            case "0" -> Cli.println("See you soon!");
+            default -> Cli.println("Incorrect input!");
         }
 
     }

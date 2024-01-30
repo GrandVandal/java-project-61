@@ -1,7 +1,5 @@
 package hexlet.code;
 
-import hexlet.code.games.Game;
-
 public class Cli {
     public static String username = "";
 
@@ -40,15 +38,15 @@ public class Cli {
         }
     }
 
-    public static void showQuestion(Game game) {
-        println("Question: " + game.getExpression());
+    public static void showQuestion(String expression) {
+        println("Question: " + expression);
         print("Your answer: ");
     }
 
     public static void wrongAnswer(String expected, String actual) {
         println("'" + actual + "'"
                 + " is wrong answer ;(. Correct answer was "
-                + "'" + expected + "'\n");
+                + "'" + expected + "'");
         println("Let's try again, " + username + "!");
     }
 }
