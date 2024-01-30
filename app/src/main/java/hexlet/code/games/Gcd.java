@@ -9,11 +9,11 @@ public class Gcd {
 
     public static void nextQuestion() {
         var rand = new Random();
-        int boundA = 50;
-        int boundB = 20;
+        int bound = 100;
+        int origin = 1;
 
-        int a = rand.nextInt(boundA);
-        int b = rand.nextInt(boundB);
+        int a = rand.nextInt(origin, bound);
+        int b = rand.nextInt(origin, bound);
 
         expression = a + " " + b;
         expected = gcd(a, b);
