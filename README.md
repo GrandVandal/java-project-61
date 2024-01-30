@@ -3,4 +3,4 @@
 
 <a href="https://codeclimate.com/github/GrandVandal/java-project-61/maintainability"><img src="https://api.codeclimate.com/v1/badges/c9fdf32a23fc97772f12/maintainability" /></a>
 
-https://asciinema.org/a/GaCPBsdqD4m8vtZtmj0Z1g495
+https://asciinema.org/a/0icf8tsBJw8socCjkit3sNjmv
