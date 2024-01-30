@@ -2,7 +2,11 @@ package hexlet.code;
 
 import java.util.Scanner;
 public class App {
-    public static Scanner userInput = new Scanner(System.in);
+    private static Scanner userInput = new Scanner(System.in);
+
+    public static Scanner getUserInput() {
+        return userInput;
+    }
 
     public static void main(String[] args) {
         Cli.showOptions();
@@ -11,7 +15,7 @@ public class App {
         String userOption = userInput.nextLine();
         Cli.println("");
 
-        int maxRounds = 3;
+        final int maxRounds = 3;
         switch (userOption) {
             case "1" -> Cli.greeting();
             case "2" -> Engine.beginGame("Even", maxRounds);

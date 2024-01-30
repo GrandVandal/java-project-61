@@ -1,8 +1,11 @@
 package hexlet.code;
 
 public class Cli {
-    public static String username = "";
+    private static String username = "";
 
+    public static  String getUsername() {
+        return username;
+    }
 
     public static void print(String text) {
         System.out.print(text);
@@ -28,7 +31,7 @@ public class Cli {
         print("""
                 Welcome to the Brain Games!
                 May I have your name?\s""");
-        username = App.userInput.nextLine();
+        username = App.getUserInput().nextLine();
         println("Hello, " + username + "!");
     }
 

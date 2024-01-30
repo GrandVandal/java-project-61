@@ -17,33 +17,33 @@ public class Engine {
             case "Even" -> {
                 Cli.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
                 Even.nextQuestion();
-                expected = Even.expected;
-                expression = Even.expression;
+                expected = Even.getExpected();
+                expression = Even.getExpression();
 
             }
             case "Calc" -> {
                 Cli.println("What is the result of the expression?");
                 Calc.nextQuestion();
-                expected = Calc.expected;
-                expression = Calc.expression;
+                expected = Calc.getExpected();
+                expression = Calc.getExpression();
             }
             case "GCD" -> {
                 Cli.println("Find the greatest common divisor of given numbers.");
                 Gcd.nextQuestion();
-                expected = Gcd.expected;
-                expression = Gcd.expression;
+                expected = Gcd.getExpected();
+                expression = Gcd.getExpression();
             }
             case "Progression" -> {
                 Cli.println("What number is missing in the progression?");
                 Progression.nextQuestion();
-                expected = Progression.expected;
-                expression = Progression.expression;
+                expected = Progression.getExpected();
+                expression = Progression.getExpression();
             }
             case "Prime" -> {
                 Cli.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
                 Prime.nextQuestion();
-                expected = Prime.expected;
-                expression = Prime.expression;
+                expected = Prime.getExpected();
+                expression = Prime.getExpression();
             }
             default -> {
                 Cli.println("No such game a presented here!");
@@ -54,7 +54,7 @@ public class Engine {
         int round = 0;
         while (round < maxRounds) {
             Cli.showQuestion(expression);
-            String answer = App.userInput.nextLine();
+            String answer = App.getUserInput().nextLine();
 
             if (!expected.equals(answer)) {
                 Cli.wrongAnswer(expected, answer);
@@ -65,29 +65,29 @@ public class Engine {
             switch (game) {
                 case "Even" -> {
                     Even.nextQuestion();
-                    expected = Even.expected;
-                    expression = Even.expression;
+                    expected = Even.getExpected();
+                    expression = Even.getExpression();
 
                 }
                 case "Calc" -> {
                     Calc.nextQuestion();
-                    expected = Calc.expected;
-                    expression = Calc.expression;
+                    expected = Calc.getExpected();
+                    expression = Calc.getExpression();
                 }
                 case "GCD" -> {
                     Gcd.nextQuestion();
-                    expected = Gcd.expected;
-                    expression = Gcd.expression;
+                    expected = Gcd.getExpected();
+                    expression = Gcd.getExpression();
                 }
                 case "Progression" -> {
                     Progression.nextQuestion();
-                    expected = Progression.expected;
-                    expression = Progression.expression;
+                    expected = Progression.getExpected();
+                    expression = Progression.getExpression();
                 }
                 case "Prime" -> {
                     Prime.nextQuestion();
-                    expected = Prime.expected;
-                    expression = Prime.expression;
+                    expected = Prime.getExpected();
+                    expression = Prime.getExpression();
                 }
                 default -> {
                     Cli.println("Somehow game name has changed which should NOT happened!");
@@ -97,6 +97,6 @@ public class Engine {
             round++;
         }
 
-        Cli.println("Congratulations, " + Cli.username + "!");
+        Cli.println("Congratulations, " + Cli.getUsername() + "!");
     }
 }

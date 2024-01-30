@@ -5,15 +5,23 @@ import java.util.Random;
 
 public class Progression {
 
-    public static String expression;
-    public static String expected;
+    private static String expression;
+    private static String expected;
+
+    public static String getExpression() {
+        return expression;
+    }
+
+    public static String getExpected() {
+        return expected;
+    }
 
     public static void nextQuestion() {
         String[] progression = new String[10];
         var rand = new Random();
 
-        int accBound = 15;
-        int[] stepBounds = {1, 10};
+        final int accBound = 15;
+        final int[] stepBounds = {1, 10};
 
         int acc = rand.nextInt(accBound);
         int step = rand.nextInt(stepBounds[0], stepBounds[1]);

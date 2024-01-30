@@ -4,14 +4,22 @@ import java.util.Random;
 
 public class Calc {
 
-    public static String expression;
-    public static String expected;
+    private static String expression;
+    private static String expected;
+
+    public static String getExpression() {
+        return expression;
+    }
+
+    public static String getExpected() {
+        return expected;
+    }
 
     public static void nextQuestion() {
         String[] operators = {"+", "-", "*"};
         var rand = new Random();
-        int boundA = 50;
-        int boundB = 20;
+        final int boundA = 50;
+        final int boundB = 20;
 
         String operator = operators[rand.nextInt(operators.length)];
         int a = rand.nextInt(boundA);
