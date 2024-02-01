@@ -1,45 +1,42 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 import java.util.Arrays;
-import java.util.Random;
 
 public class Progression {
 
-    private static String expression;
-    private static String expected;
+    public static void prepareGame(int maxRounds) {
+        String rule = "What number is missing in the progression?";
 
-    public static String getExpression() {
-        return expression;
-    }
+        String[] expressions = new String[maxRounds];
+        String[] expected = new String[maxRounds];
 
-    public static String getExpected() {
-        return expected;
-    }
-
-    public static void nextQuestion() {
         final int progressionLength = 10;
+        for (int i = 0; i < maxRounds; i++) {
+            int acc = Util.nextInt(15);
+            int step = Util.nextInt(1, 10);
+            int unknown = Util.nextInt(progressionLength);
 
-        String[] progression = new String[progressionLength];
-        var rand = new Random();
+            String[] progression = makeProgression(progressionLength, acc, step);
 
-        final int accBound = 15;
-        final int[] stepBounds = {1, 10};
-
-        int acc = rand.nextInt(accBound);
-        int step = rand.nextInt(stepBounds[0], stepBounds[1]);
-        int unknown = rand.nextInt(progression.length);
-
-        for (int i = 0; i < progression.length; i++) {
-            if (i == unknown) {
-                expected = Integer.toString(acc);
-            }
-            progression[i] = (i != unknown) ? Integer.toString(acc) : "..";
-            acc += step;
+            expected[i] = progression[unknown];
+            progression[unknown] = "..";
+            expressions[i] = Arrays.toString(progression)
+                    .replaceAll(",", "")
+                    .replaceAll("[\\[\\]]", "");
         }
 
-        expression = Arrays.toString(progression)
-                .replaceAll(",", "")
-                .replaceAll("[\\[\\]]", "");
+        Engine.beginGame(rule, expressions, expected);
+    }
+
+    public static String[] makeProgression(int length, int acc, int step) {
+        String[] progression = new String[length];
+        for (int elem = 0; elem < length; elem++) {
+            progression[elem] = Integer.toString(acc);
+            acc += step;
+        }
+        return progression;
     }
 
 }

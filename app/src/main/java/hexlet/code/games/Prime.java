@@ -1,28 +1,23 @@
 package hexlet.code.games;
 
-import java.util.Random;
+import hexlet.code.Engine;
 
 public class Prime {
 
-    private static String expression;
-    private static String expected;
+    public static void prepareGame(int maxRounds) {
+        String rule = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
-    public static String getExpression() {
-        return expression;
-    }
+        String[] expressions = new String[maxRounds];
+        String[] expected = new String[maxRounds];
 
-    public static String getExpected() {
-        return expected;
-    }
+        for (int i = 0; i < maxRounds; i++) {
+            int number = Util.nextInt(100);
 
-    public static void nextQuestion() {
-        var rand = new Random();
-        final int bound = 100;
+            expressions[i] = Integer.toString(number);
+            expected[i] = (isPrime(number)) ? "yes" : "no";
+        }
 
-        int number = rand.nextInt(bound);
-
-        expression = Integer.toString(number);
-        expected = (isPrime(number)) ? "yes" : "no";
+        Engine.beginGame(rule, expressions, expected);
     }
 
     public static boolean isPrime(int number, int index) {
@@ -47,4 +42,5 @@ public class Prime {
     public static boolean isPrime(int number) {
         return isPrime(number, 2);
     }
+
 }

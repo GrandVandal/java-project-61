@@ -1,27 +1,23 @@
 package hexlet.code.games;
 
-import java.util.Random;
+import hexlet.code.Engine;
 
 public class Even {
 
-    private static String expression;
-    private static String expected;
+    public static void prepareGame(int maxRounds) {
+        String rule = "Answer 'yes' if the number is even, otherwise answer 'no'.";
 
-    public static String getExpression() {
-        return expression;
+        String[] expressions = new String[maxRounds];
+        String[] expected = new String[maxRounds];
+
+        for (int i = 0; i < maxRounds; i++) {
+            int number = Util.nextInt(100);
+
+            expressions[i] = Integer.toString(number);
+            expected[i] = number % 2 == 0 ? "yes" : "no";
+        }
+
+        Engine.beginGame(rule, expressions, expected);
     }
 
-    public static String getExpected() {
-        return expected;
-    }
-
-    public static void nextQuestion() {
-        var rand = new Random();
-        final int bound = 100;
-
-        int number = rand.nextInt(bound);
-
-        expression = Integer.toString(number);
-        expected = number % 2 == 0 ? "yes" : "no";
-    }
 }

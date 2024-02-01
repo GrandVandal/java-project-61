@@ -7,16 +7,8 @@ public class Cli {
         return username;
     }
 
-    public static void print(String text) {
-        System.out.print(text);
-    }
-
-    public static void println(String text) {
-        System.out.println(text);
-    }
-
-    public static void showOptions() {
-        println("""
+    public static void showMenu() {
+        System.out.println("""
                 Please enter the game number and press Enter.
                 1 - Greet
                 2 - Even
@@ -28,28 +20,11 @@ public class Cli {
     }
 
     public static void greeting() {
-        print("""
+        System.out.print("""
                 Welcome to the Brain Games!
                 May I have your name?\s""");
         username = App.getUserInput().nextLine();
-        println("Hello, " + username + "!");
+        System.out.println("Hello, " + username + "!");
     }
 
-    public static void checkGreeting() {
-        if (username.isEmpty()) {
-            greeting();
-        }
-    }
-
-    public static void showQuestion(String expression) {
-        println("Question: " + expression);
-        print("Your answer: ");
-    }
-
-    public static void wrongAnswer(String expected, String actual) {
-        println("'" + actual + "'"
-                + " is wrong answer ;(. Correct answer was "
-                + "'" + expected + "'");
-        println("Let's try again, " + username + "!");
-    }
 }

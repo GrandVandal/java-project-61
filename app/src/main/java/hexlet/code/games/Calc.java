@@ -1,40 +1,38 @@
 package hexlet.code.games;
 
-import java.util.Random;
+import hexlet.code.Engine;
 
 public class Calc {
 
-    private static String expression;
-    private static String expected;
+    public static void prepareGame(int maxRounds) {
+        String rule = "What is the result of the expression?";
 
-    public static String getExpression() {
-        return expression;
+        String[] expressions = new String[maxRounds];
+        String[] expected = new String[maxRounds];
+
+        for (int i = 0; i < maxRounds; i++) {
+            int[] numbers = Util.nextIntArray(new int[] {100, 20});
+            String operator = Util.randomFromArray(new String[]{"+", "-", "*"});
+
+            expressions[i] = numbers[0] + " " + operator + " " + numbers[1];
+            expected[i] = formExpected(numbers[0], numbers[1], operator);
+        }
+
+        Engine.beginGame(rule, expressions, expected);
     }
 
-    public static String getExpected() {
-        return expected;
-    }
-
-    public static void nextQuestion() {
-        String[] operators = {"+", "-", "*"};
-        var rand = new Random();
-        final int boundA = 50;
-        final int boundB = 20;
-
-        String operator = operators[rand.nextInt(operators.length)];
-        int a = rand.nextInt(boundA);
-        int b = rand.nextInt(boundB);
-
-        expression = a + " " + operator + " " + b;
-        if (operator.equals("+")) {
-            expected = Integer.toString(a + b);
-        }
-        if (operator.equals("-")) {
-            expected = Integer.toString(a - b);
-        }
-        if (operator.equals("*")) {
-            expected = Integer.toString(a * b);
+    public static String formExpected(int a, int b, String operator) {
+        switch (operator) {
+            case "+" -> {
+                return Integer.toString(a + b);
+            }
+            case "-" -> {
+                return Integer.toString(a - b);
+            }
+            case "*" -> {
+                return Integer.toString(a * b);
+            }
+            default -> throw new RuntimeException("Invalid operator: '" + operator + "' !");
         }
     }
-
 }

@@ -1,102 +1,36 @@
 package hexlet.code;
 
-import hexlet.code.games.Even;
-import hexlet.code.games.Calc;
-import hexlet.code.games.Gcd;
-import hexlet.code.games.Progression;
-import hexlet.code.games.Prime;
-
 public class Engine {
 
-    public static void beginGame(String game, int maxRounds) {
-        Cli.checkGreeting();
+    public static void beginGame(String rule, String[] expressions, String[] expected) {
+        Cli.greeting();
+        System.out.println(rule);
 
-        String expected;
-        String expression;
-        switch (game) {
-            case "Even" -> {
-                Cli.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-                Even.nextQuestion();
-                expected = Even.getExpected();
-                expression = Even.getExpression();
-
-            }
-            case "Calc" -> {
-                Cli.println("What is the result of the expression?");
-                Calc.nextQuestion();
-                expected = Calc.getExpected();
-                expression = Calc.getExpression();
-            }
-            case "GCD" -> {
-                Cli.println("Find the greatest common divisor of given numbers.");
-                Gcd.nextQuestion();
-                expected = Gcd.getExpected();
-                expression = Gcd.getExpression();
-            }
-            case "Progression" -> {
-                Cli.println("What number is missing in the progression?");
-                Progression.nextQuestion();
-                expected = Progression.getExpected();
-                expression = Progression.getExpression();
-            }
-            case "Prime" -> {
-                Cli.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
-                Prime.nextQuestion();
-                expected = Prime.getExpected();
-                expression = Prime.getExpression();
-            }
-            default -> {
-                Cli.println("No such game a presented here!");
-                return;
-            }
-        }
-
-        int round = 0;
-        while (round < maxRounds) {
-            Cli.showQuestion(expression);
+        for (int i = 0; i < expressions.length; i++) {
+            showQuestion(expressions[i]);
             String answer = App.getUserInput().nextLine();
 
-            if (!expected.equals(answer)) {
-                Cli.wrongAnswer(expected, answer);
+            if (!expected[i].equals(answer)) {
+                wrongAnswer(expected[i], answer);
                 return;
             }
 
-            Cli.println("Correct!");
-            switch (game) {
-                case "Even" -> {
-                    Even.nextQuestion();
-                    expected = Even.getExpected();
-                    expression = Even.getExpression();
-
-                }
-                case "Calc" -> {
-                    Calc.nextQuestion();
-                    expected = Calc.getExpected();
-                    expression = Calc.getExpression();
-                }
-                case "GCD" -> {
-                    Gcd.nextQuestion();
-                    expected = Gcd.getExpected();
-                    expression = Gcd.getExpression();
-                }
-                case "Progression" -> {
-                    Progression.nextQuestion();
-                    expected = Progression.getExpected();
-                    expression = Progression.getExpression();
-                }
-                case "Prime" -> {
-                    Prime.nextQuestion();
-                    expected = Prime.getExpected();
-                    expression = Prime.getExpression();
-                }
-                default -> {
-                    Cli.println("Somehow game name has changed which should NOT happened!");
-                    return;
-                }
-            }
-            round++;
+            System.out.println("Correct!");
         }
 
-        Cli.println("Congratulations, " + Cli.getUsername() + "!");
+        System.out.println("Congratulations, " + Cli.getUsername() + "!");
     }
+
+    public static void showQuestion(String expression) {
+        System.out.println("Question: " + expression);
+        System.out.print("Your answer: ");
+    }
+
+    public static void wrongAnswer(String expected, String actual) {
+        System.out.println("'" + actual + "'"
+                + " is wrong answer ;(. Correct answer was "
+                + "'" + expected + "'");
+        System.out.println("Let's try again, " + Cli.getUsername() + "!");
+    }
+
 }

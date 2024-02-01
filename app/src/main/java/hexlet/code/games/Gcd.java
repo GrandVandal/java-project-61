@@ -1,30 +1,23 @@
 package hexlet.code.games;
 
-import java.util.Random;
+import hexlet.code.Engine;
 
 public class Gcd {
 
-    private static String expression;
-    private static String expected;
+    public static void prepareGame(int maxRounds) {
+        String rule = "Find the greatest common divisor of given numbers.";
 
-    public static String getExpression() {
-        return expression;
-    }
+        String[] expressions = new String[maxRounds];
+        String[] expected = new String[maxRounds];
 
-    public static String getExpected() {
-        return expected;
-    }
+        for (int i = 0; i < maxRounds; i++) {
+            int[] numbers = Util.nextIntArray(2, 100);
 
-    public static void nextQuestion() {
-        var rand = new Random();
-        final int bound = 100;
-        final int origin = 1;
+            expressions[i] = numbers[0] + " " + numbers[1];
+            expected[i] = gcd(numbers[0], numbers[1]);
+        }
 
-        int a = rand.nextInt(origin, bound);
-        int b = rand.nextInt(origin, bound);
-
-        expression = a + " " + b;
-        expected = gcd(a, b);
+        Engine.beginGame(rule, expressions, expected);
     }
 
     public static String gcd(int a, int b) {
@@ -37,4 +30,5 @@ public class Gcd {
         }
         return Integer.toString(a);
     }
+
 }
