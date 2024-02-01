@@ -8,14 +8,16 @@ public class Progression {
 
     public static void prepareGame(int maxRounds) {
         String rule = "What number is missing in the progression?";
+        final int accBound = 15;
+        final int stepBound = 10;
 
         String[] expressions = new String[maxRounds];
         String[] expected = new String[maxRounds];
 
         final int progressionLength = 10;
         for (int i = 0; i < maxRounds; i++) {
-            int acc = Util.nextInt(15);
-            int step = Util.nextInt(1, 10);
+            int acc = Util.nextInt(accBound);
+            int step = Util.nextInt(1, stepBound);
             int unknown = Util.nextInt(progressionLength);
 
             String[] progression = makeProgression(progressionLength, acc, step);

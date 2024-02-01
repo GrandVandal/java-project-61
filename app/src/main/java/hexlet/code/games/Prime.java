@@ -6,12 +6,13 @@ public class Prime {
 
     public static void prepareGame(int maxRounds) {
         String rule = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        final int bound = 100;
 
         String[] expressions = new String[maxRounds];
         String[] expected = new String[maxRounds];
 
         for (int i = 0; i < maxRounds; i++) {
-            int number = Util.nextInt(100);
+            int number = Util.nextInt(bound);
 
             expressions[i] = Integer.toString(number);
             expected[i] = (isPrime(number)) ? "yes" : "no";

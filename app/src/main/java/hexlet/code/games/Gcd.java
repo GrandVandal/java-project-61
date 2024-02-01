@@ -6,12 +6,13 @@ public class Gcd {
 
     public static void prepareGame(int maxRounds) {
         String rule = "Find the greatest common divisor of given numbers.";
+        final int bound = 100;
 
         String[] expressions = new String[maxRounds];
         String[] expected = new String[maxRounds];
 
         for (int i = 0; i < maxRounds; i++) {
-            int[] numbers = Util.nextIntArray(2, 100);
+            int[] numbers = Util.nextIntArray(2, bound);
 
             expressions[i] = numbers[0] + " " + numbers[1];
             expected[i] = gcd(numbers[0], numbers[1]);

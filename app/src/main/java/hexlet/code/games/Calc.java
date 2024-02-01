@@ -6,12 +6,13 @@ public class Calc {
 
     public static void prepareGame(int maxRounds) {
         String rule = "What is the result of the expression?";
+        final int[] boundsArray = new int[] {100, 20};
 
         String[] expressions = new String[maxRounds];
         String[] expected = new String[maxRounds];
 
         for (int i = 0; i < maxRounds; i++) {
-            int[] numbers = Util.nextIntArray(new int[] {100, 20});
+            int[] numbers = Util.nextIntArray(boundsArray);
             String operator = Util.randomFromArray(new String[]{"+", "-", "*"});
 
             expressions[i] = numbers[0] + " " + operator + " " + numbers[1];
