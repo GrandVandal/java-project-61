@@ -2,11 +2,7 @@ package hexlet.code;
 
 public class Engine {
 
-    private static final int MAX_ROUNDS = 3;
-
-    public static int getMaxRounds() {
-        return MAX_ROUNDS;
-    }
+    public static final int MAX_ROUNDS = 3;
 
     public static void beginGame(String rule, String[][] gameRounds) {
         System.out.print("""

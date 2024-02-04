@@ -29,7 +29,7 @@ public class App {
         String userOption = USER_INPUT.nextLine();
         System.out.println();
 
-        final int maxRounds = Engine.getMaxRounds();
+        final int maxRounds = Engine.MAX_ROUNDS;
         switch (userOption) {
             case "1" -> Cli.greeting();
             case "2" -> Even.prepareGame(maxRounds);

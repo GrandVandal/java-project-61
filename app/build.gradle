@@ -1,7 +1,6 @@
 import com.sun.source.util.JavacTask
 
 plugins {
-    id 'java'
     id 'application'
     id 'checkstyle'
 }
