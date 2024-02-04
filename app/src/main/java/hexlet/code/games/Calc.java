@@ -8,30 +8,29 @@ public class Calc {
         String rule = "What is the result of the expression?";
         final int[] boundsArray = new int[] {100, 20};
 
-        String[] expressions = new String[maxRounds];
-        String[] expected = new String[maxRounds];
+        String[][] gameRounds = new String[maxRounds][2];
 
         for (int i = 0; i < maxRounds; i++) {
             int[] numbers = Util.nextIntArray(boundsArray);
             String operator = Util.randomFromArray(new String[]{"+", "-", "*"});
 
-            expressions[i] = numbers[0] + " " + operator + " " + numbers[1];
-            expected[i] = formExpected(numbers[0], numbers[1], operator);
+            gameRounds[i][0] = numbers[0] + " " + operator + " " + numbers[1];
+            gameRounds[i][1] = Integer.toString(calculate(numbers[0], numbers[1], operator));
         }
 
-        Engine.beginGame(rule, expressions, expected);
+        Engine.beginGame(rule, gameRounds);
     }
 
-    public static String formExpected(int a, int b, String operator) {
+    public static int calculate(int a, int b, String operator) {
         switch (operator) {
             case "+" -> {
-                return Integer.toString(a + b);
+                return a + b;
             }
             case "-" -> {
-                return Integer.toString(a - b);
+                return a - b;
             }
             case "*" -> {
-                return Integer.toString(a * b);
+                return a * b;
             }
             default -> throw new RuntimeException("Invalid operator: '" + operator + "' !");
         }

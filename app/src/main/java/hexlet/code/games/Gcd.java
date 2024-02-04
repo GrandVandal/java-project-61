@@ -8,20 +8,19 @@ public class Gcd {
         String rule = "Find the greatest common divisor of given numbers.";
         final int bound = 100;
 
-        String[] expressions = new String[maxRounds];
-        String[] expected = new String[maxRounds];
+        String[][] gameRounds = new String[maxRounds][2];
 
         for (int i = 0; i < maxRounds; i++) {
             int[] numbers = Util.nextIntArray(2, bound);
 
-            expressions[i] = numbers[0] + " " + numbers[1];
-            expected[i] = gcd(numbers[0], numbers[1]);
+            gameRounds[i][0] = numbers[0] + " " + numbers[1];
+            gameRounds[i][1] = Integer.toString(gcd(numbers[0], numbers[1]));
         }
 
-        Engine.beginGame(rule, expressions, expected);
+        Engine.beginGame(rule, gameRounds);
     }
 
-    public static String gcd(int a, int b) {
+    public static int gcd(int a, int b) {
         while (a != b) {
             if (a > b) {
                 a -= b;
@@ -29,7 +28,7 @@ public class Gcd {
                 b -= a;
             }
         }
-        return Integer.toString(a);
+        return a;
     }
 
 }

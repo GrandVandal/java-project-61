@@ -8,40 +8,30 @@ public class Prime {
         String rule = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
         final int bound = 100;
 
-        String[] expressions = new String[maxRounds];
-        String[] expected = new String[maxRounds];
+        String[][] gameRounds = new String[maxRounds][2];
 
         for (int i = 0; i < maxRounds; i++) {
             int number = Util.nextInt(bound);
 
-            expressions[i] = Integer.toString(number);
-            expected[i] = (isPrime(number)) ? "yes" : "no";
+            gameRounds[i][0] = Integer.toString(number);
+            gameRounds[i][1] = (isPrime(number)) ? "yes" : "no";
         }
 
-        Engine.beginGame(rule, expressions, expected);
+        Engine.beginGame(rule, gameRounds);
     }
 
-    public static boolean isPrime(int number, int index) {
-        // Corner cases
-        if (number == 0 || number == 1) {
+    public static boolean isPrime(int n) {
+        // Corner case
+        if (n <= 1) {
             return false;
         }
-
-        // Checking Prime
-        if (number == index) {
-            return true;
+        // Check from 2 to sqrt(n)
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+                return false;
+            }
         }
-
-        // Base cases
-        if (number % index == 0) {
-            return false;
-        }
-        index++;
-        return isPrime(number, index);
-    }
-
-    public static boolean isPrime(int number) {
-        return isPrime(number, 2);
+        return true;
     }
 
 }

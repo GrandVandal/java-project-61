@@ -2,8 +2,6 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
-import java.util.Arrays;
-
 public class Progression {
 
     public static void prepareGame(int maxRounds) {
@@ -11,8 +9,7 @@ public class Progression {
         final int accBound = 15;
         final int stepBound = 10;
 
-        String[] expressions = new String[maxRounds];
-        String[] expected = new String[maxRounds];
+        String[][] gameRounds = new String[maxRounds][2];
 
         final int progressionLength = 10;
         for (int i = 0; i < maxRounds; i++) {
@@ -22,21 +19,18 @@ public class Progression {
 
             String[] progression = makeProgression(progressionLength, acc, step);
 
-            expected[i] = progression[unknown];
+            gameRounds[i][1] = progression[unknown];
             progression[unknown] = "..";
-            expressions[i] = Arrays.toString(progression)
-                    .replaceAll(",", "")
-                    .replaceAll("[\\[\\]]", "");
+            gameRounds[i][0] = String.join(" ", progression);
         }
 
-        Engine.beginGame(rule, expressions, expected);
+        Engine.beginGame(rule, gameRounds);
     }
 
     public static String[] makeProgression(int length, int acc, int step) {
         String[] progression = new String[length];
-        for (int elem = 0; elem < length; elem++) {
-            progression[elem] = Integer.toString(acc);
-            acc += step;
+        for (int i = 0; i < length; i++) {
+            progression[i] = Integer.toString(acc + i * step);
         }
         return progression;
     }

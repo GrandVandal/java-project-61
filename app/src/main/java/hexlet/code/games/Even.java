@@ -8,17 +8,19 @@ public class Even {
         String rule = "Answer 'yes' if the number is even, otherwise answer 'no'.";
         final int bound = 100;
 
-        String[] expressions = new String[maxRounds];
-        String[] expected = new String[maxRounds];
+        String[][] gameRounds = new String[maxRounds][2];
 
         for (int i = 0; i < maxRounds; i++) {
             int number = Util.nextInt(bound);
 
-            expressions[i] = Integer.toString(number);
-            expected[i] = number % 2 == 0 ? "yes" : "no";
+            gameRounds[i][0] = Integer.toString(number);
+            gameRounds[i][1] = isEven(number) ? "yes" : "no";
         }
 
-        Engine.beginGame(rule, expressions, expected);
+        Engine.beginGame(rule, gameRounds);
     }
 
+    public static boolean isEven(int number) {
+        return number % 2 == 0;
+    }
 }
