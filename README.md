@@ -46,8 +46,8 @@ Congratulations, Roman!
 
 ## Сборка
 
-Из дирректории App выполнить команду make clean-build.
+Из дирректории app выполнить команду make clean-build.
 
 ## Запуск приложения
 
-Из дирректории App выполнить команду make run-dist.
+Из дирректории app выполнить команду make run-dist.
